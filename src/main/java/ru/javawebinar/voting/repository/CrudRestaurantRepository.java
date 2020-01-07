@@ -2,10 +2,10 @@ package ru.javawebinar.voting.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
-import ru.javawebinar.voting.model.Dish;
+import ru.javawebinar.voting.model.Restaurant;
 
 @Transactional(readOnly = true)
-public interface CrudDishRepository extends JpaRepository<Dish, Integer> {
+public interface CrudRestaurantRepository extends JpaRepository<Restaurant, Integer> {
 //    @Query(name = Dish.ALL_SORTED)
 //    List<Dish> findAll(@Param("userId") int userId);
 //

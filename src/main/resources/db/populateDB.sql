@@ -12,12 +12,12 @@ INSERT INTO user_roles (role, user_id) VALUES
   ('ROLE_ADMIN', 100001);
 
 
-INSERT INTO restaurants (title) VALUES
+INSERT INTO restaurants (name) VALUES
   ('Планета чебуреков'),
   ('Гречкин дом');
 
 
-INSERT INTO dishes (datetime, title, rest_id)
+INSERT INTO dishes (datetime, name, rest_id)
 VALUES ('2020-01-01 10:00:00', 'Чебурек с сыром', 100002),
        ('2020-01-01 10:00:00', 'Пепси', 100002),
        ('2020-01-01 10:00:00', 'Конфета', 100002),

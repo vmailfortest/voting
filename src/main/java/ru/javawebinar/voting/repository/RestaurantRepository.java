@@ -4,24 +4,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.voting.model.Dish;
+import ru.javawebinar.voting.model.Restaurant;
 
 @Repository
-public class DataJpaDishRepository implements DishRepository {
+public class RestaurantRepository {
 
     @Autowired
-    private CrudDishRepository crudRepository;
+    private CrudRestaurantRepository crudRepository;
 
-    @Override
     @Transactional
-    public Dish save(Dish dish) {
-//        if (!meal.isNew() && get(meal.getId(), userId) == null) {
-//            return null;
-//        }
-//
-//        var user = crudUserRepository.getOne(userId);
-//        meal.setUser(user);
+    public Restaurant save(Restaurant restaurant) {
+        if (!restaurant.isNew()) {
+            return null;
+        }
 
-        return crudRepository.save(dish);
+//        var user = crudUserRepository.getOne(restaurant);
+//        restaurant.setUser(user);
+
+        return crudRepository.save(restaurant);
     }
 
 //    @Override

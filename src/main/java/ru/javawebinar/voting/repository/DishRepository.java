@@ -3,12 +3,10 @@ package ru.javawebinar.voting.repository;
 import org.springframework.stereotype.Repository;
 import ru.javawebinar.voting.model.Dish;
 
-import java.util.Collection;
-
 @Repository
 public interface DishRepository {
     // null if not found, when updated
-    Dish save(Dish dish);
+    Dish save(Dish menu);
 
 //    // false if not found
 //    boolean delete(int id);

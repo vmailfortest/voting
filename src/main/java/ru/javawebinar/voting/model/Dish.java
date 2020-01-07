@@ -9,11 +9,8 @@ import javax.persistence.*;
 //                "WHERE m.user.id=:userId AND m.dateTime >= :startDate AND m.dateTime < :endDate ORDER BY m.dateTime DESC"),
 })
 @Entity
-@Table(name = "dishes", uniqueConstraints = {@UniqueConstraint(columnNames = {"datetime", "title", "rest_id"}, name = "dishes_unique_datetime_title_rest_idx")})
-public class Dish extends AbstractBaseEntity{
-
-    @Column(name = "title", nullable = false)
-    private String title;
+@Table(name = "dishes")
+public class Dish extends AbstractNamedEntity{
 
     @Column(name = "datetime", nullable = false)
     private String datetime;
@@ -24,25 +21,10 @@ public class Dish extends AbstractBaseEntity{
     public Dish() {
     }
 
-    public Dish(String title, String datetime, int rest_id){
-        this.title = title;
+    public Dish(String name, String datetime, int rest_id){
+        super(null, name);
         this.datetime = datetime;
         this.rest_id = rest_id;
-    }
-
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-
-    public String getName() {
-        return title;
-    }
-    public void setName(String title) {
-        this.title = title;
     }
 
     public String getDate() {
