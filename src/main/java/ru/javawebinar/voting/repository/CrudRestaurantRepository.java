@@ -6,6 +6,11 @@ import ru.javawebinar.voting.model.Restaurant;
 
 @Transactional(readOnly = true)
 public interface CrudRestaurantRepository extends JpaRepository<Restaurant, Integer> {
+
+    @Override
+    @Transactional
+    Restaurant save(Restaurant item);
+
 //    @Query(name = Dish.ALL_SORTED)
 //    List<Dish> findAll(@Param("userId") int userId);
 //

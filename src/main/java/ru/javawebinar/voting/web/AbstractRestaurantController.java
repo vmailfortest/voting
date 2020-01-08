@@ -10,6 +10,11 @@ public abstract class AbstractRestaurantController {
     @Autowired
     private RestaurantService service;
 
+    public Restaurant create(Restaurant restaurant) {
+//        log.info("create from to {}", restaurant);
+        return service.create(restaurant);
+    }
+
     public Restaurant get(int id) {
 //        int userId = SecurityUtil.authUserId();
 //        log.info("get meal {} for user {}", id, userId);

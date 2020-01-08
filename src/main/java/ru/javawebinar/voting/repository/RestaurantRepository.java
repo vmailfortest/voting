@@ -18,9 +18,6 @@ public class RestaurantRepository {
             return null;
         }
 
-//        var user = crudUserRepository.getOne(restaurant);
-//        restaurant.setUser(user);
-
         return crudRepository.save(restaurant);
     }
 
