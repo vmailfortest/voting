@@ -4,6 +4,7 @@ import ru.javawebinar.voting.model.Restaurant;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static ru.javawebinar.voting.model.AbstractBaseEntity.START_SEQ;
 
 public class RestaurantTestData {
@@ -22,18 +23,18 @@ public class RestaurantTestData {
         return new Restaurant(RESTAURANT_1_ID, "Планета чебуреков-2");
     }
 
-//    public static void assertMatch(Meal actual, Meal expected) {
-//        assertThat(actual).isEqualToIgnoringGivenFields(expected, "user");
-//    }
-//
-//    public static void assertMatch(Iterable<Meal> actual, Meal... expected) {
-//        assertMatch(actual, List.of(expected));
-//    }
-//
-//    public static void assertMatch(Iterable<Meal> actual, Iterable<Meal> expected) {
-//        assertThat(actual).usingElementComparatorIgnoringFields("user").isEqualTo(expected);
-//    }
-//
+    public static void assertMatch(Restaurant actual, Restaurant expected) {
+        assertThat(actual).isEqualToIgnoringGivenFields(expected, "user");
+    }
+
+    public static void assertMatch(Iterable<Restaurant> actual, Restaurant... expected) {
+        assertMatch(actual, List.of(expected));
+    }
+
+    public static void assertMatch(Iterable<Restaurant> actual, Iterable<Restaurant> expected) {
+        assertThat(actual).usingElementComparatorIgnoringFields("user").isEqualTo(expected);
+    }
+
 //    public static ResultMatcher contentJson(MealTo... expected) {
 //        return contentJson(List.of(expected));
 //    }
