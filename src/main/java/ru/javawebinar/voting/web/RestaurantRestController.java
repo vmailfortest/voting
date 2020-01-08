@@ -1,16 +1,11 @@
 package ru.javawebinar.voting.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.javawebinar.voting.model.Dish;
 import ru.javawebinar.voting.model.Restaurant;
-import ru.javawebinar.voting.service.DishService;
-import ru.javawebinar.voting.service.RestaurantService;
 
 @RestController
 @RequestMapping(value = RestaurantRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
