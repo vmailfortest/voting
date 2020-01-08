@@ -9,6 +9,7 @@ import ru.javawebinar.voting.service.RestaurantService;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static ru.javawebinar.voting.RestaurantTestData.RESTAURANT_1_ID;
 
 public class RestaurantRestControllerTest extends AbstractControllerTest {
 
@@ -19,7 +20,7 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
 
     @Test
     void get() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get(REST_URL + "100002"))
+        mockMvc.perform(MockMvcRequestBuilders.get(REST_URL + RESTAURANT_1_ID))
 //                .with(userAuth(USER)))
                 .andExpect(status().isOk())
                 .andDo(print())
