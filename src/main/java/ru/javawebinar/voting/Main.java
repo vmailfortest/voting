@@ -3,7 +3,7 @@ package ru.javawebinar.voting;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import ru.javawebinar.voting.model.Dish;
 import ru.javawebinar.voting.model.Restaurant;
-import ru.javawebinar.voting.web.DishRestController;
+import ru.javawebinar.voting.web.AbstractDishController;
 import ru.javawebinar.voting.web.RestaurantRestController;
 
 import java.util.Arrays;
@@ -22,11 +22,11 @@ public class Main {
             appCtx.refresh();
             System.out.println("Bean definition names: " + Arrays.toString(appCtx.getBeanDefinitionNames()));
 
-            DishRestController dishController = appCtx.getBean(DishRestController.class);
+            AbstractDishController dishController = appCtx.getBean(AbstractDishController.class);
             RestaurantRestController restaurantController = appCtx.getBean(RestaurantRestController.class);
 
             dishController.create(new Dish("hello", "2019-12-24 10:00:00", 100002));
-            restaurantController.create(new Restaurant("NewRestaurant"));
+//            restaurantController.create(new Restaurant("NewRestaurant"));
             System.out.println();
 
 //            MealRestController mealController = appCtx.getBean(MealRestController.class);

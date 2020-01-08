@@ -29,10 +29,9 @@ public class RestaurantRepository {
 //        return crudRepository.delete(id, userId) != 0;
 //    }
 //
-//    @Override
-//    public Meal get(int id, int userId) {
-//        return crudRepository.findById(id).filter(meal -> meal.getUser().getId().equals(userId)).orElse(null);
-//    }
+    public Restaurant get(int id, int userId) {
+        return crudRepository.findById(id).orElse(null);
+    }
 //
 //    @Override
 //    public List<Dish> getAll(int userId) {

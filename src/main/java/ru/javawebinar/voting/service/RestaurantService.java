@@ -17,7 +17,7 @@ public class RestaurantService {
     }
 
     public Restaurant get(int id, int userId) {
-        return null;
+        return repository.get(id, userId);
     }
 
     //    public void delete(int id, int userId) {

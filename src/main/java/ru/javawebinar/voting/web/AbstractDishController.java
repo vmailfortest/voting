@@ -1,27 +1,16 @@
 package ru.javawebinar.voting.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import ru.javawebinar.voting.model.Dish;
-import ru.javawebinar.voting.model.Restaurant;
 import ru.javawebinar.voting.service.DishService;
-import ru.javawebinar.voting.service.RestaurantService;
 
-@RestController
-@RequestMapping(value = RestaurantRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class RestaurantRestController extends AbstractRestaurantController{
-    static final String REST_URL = "/rest/profile/restaurants";
+@Controller
+public abstract class AbstractDishController {
+//    private static final Logger log = LoggerFactory.getLogger(DishRestController.class);
 
-    @Override
-    @GetMapping("/{id}")
-    public Restaurant get(@PathVariable int id) {
-        return super.get(id);
-    }
+    @Autowired
+    private DishService service;
 
 //    public Dish get(int id) {
 //        int userId = SecurityUtil.authUserId();
@@ -41,12 +30,12 @@ public class RestaurantRestController extends AbstractRestaurantController{
 //        return MealsUtil.getTos(service.getAll(userId), SecurityUtil.authUserCaloriesPerDay());
 //    }
 //
-//    public Restaurant create(Restaurant restaurant) {
+    public Dish create(Dish meal) {
 //        int userId = SecurityUtil.authUserId();
 //        checkNew(meal);
 //        log.info("create {} for user {}", meal, userId);
-//        return service.create(restaurant);
-//    }
+        return service.create(meal);
+    }
 //
 //    public void update(Meal meal, int id) {
 //        int userId = SecurityUtil.authUserId();
