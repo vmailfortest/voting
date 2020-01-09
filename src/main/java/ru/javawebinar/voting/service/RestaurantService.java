@@ -5,6 +5,8 @@ import org.springframework.util.Assert;
 import ru.javawebinar.voting.model.Restaurant;
 import ru.javawebinar.voting.repository.RestaurantRepository;
 
+import java.util.List;
+
 @Service
 public class RestaurantService {
 
@@ -23,20 +25,16 @@ public class RestaurantService {
         return repository.get(id, userId);
     }
 
-    //    public void delete(int id, int userId) {
-//        repository.delete(id, userId);
-//    }
-//
-//
-//
-//    public List<Dish> getAll(int userId) {
-//        return repository.getAll(userId);
-//    }
-//
-//    public void update(Dish meal, int userId) {
-//        Assert.notNull(meal, "meal must not be null");
-//        checkNotFoundWithId(repository.save(meal, userId), meal.getId());
-//    }
-//
+    public List<Restaurant> getAll(int userId) {
+        return repository.getAll(userId);
+    }
 
+    public void update(Restaurant restaurant) {
+        Assert.notNull(restaurant, "restaurant must not be null");
+         repository.save(restaurant);
+    }
+
+    public void delete(int id) {
+        repository.delete(id, 0);
+    }
 }

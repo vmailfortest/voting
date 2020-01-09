@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.voting.model.Dish;
 import ru.javawebinar.voting.model.Restaurant;
 
+import java.util.List;
+
 @Repository
 public class RestaurantRepository {
 
@@ -14,29 +16,22 @@ public class RestaurantRepository {
 
     @Transactional
     public Restaurant save(Restaurant restaurant) {
-        if (!restaurant.isNew()) {
+        if (!restaurant.isNew() && get(restaurant.getId(), 0) == null) {
             return null;
         }
 
         return crudRepository.save(restaurant);
     }
 
-//    @Override
-//    public boolean delete(int id, int userId) {
-//        return crudRepository.delete(id, userId) != 0;
-//    }
-//
     public Restaurant get(int id, int userId) {
         return crudRepository.findById(id).orElse(null);
     }
-//
-//    @Override
-//    public List<Dish> getAll(int userId) {
-//        return crudRepository.findAll(userId);
-//    }
-//
-//    @Override
-//    public List<Meal> getBetweenInclusive(LocalDate startDate, LocalDate endDate, int userId) {
-//        return crudRepository.getBetween(getStartInclusive(startDate), getEndExclusive(endDate), userId);
-//    }
+
+    public List<Restaurant> getAll(int userId) {
+        return crudRepository.findAll();
+    }
+
+    public void delete(int id, int userId) {
+        crudRepository.deleteById(id);
+    }
 }
