@@ -18,6 +18,9 @@ import ru.javawebinar.voting.util.UserUtil;
 
 import java.util.List;
 
+import static ru.javawebinar.voting.util.ValidationUtil.checkNotFound;
+import static ru.javawebinar.voting.util.ValidationUtil.checkNotFoundWithId;
+
 @Service("userService")
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class UserService implements UserDetailsService {
@@ -37,19 +40,16 @@ public class UserService implements UserDetailsService {
 
     @CacheEvict(value = "users", allEntries = true)
     public void delete(int id) {
-//        checkNotFoundWithId(repository.delete(id), id);
-        repository.delete(id);
+        checkNotFoundWithId(repository.delete(id), id);
     }
 
     public User get(int id) {
-//        return checkNotFoundWithId(repository.get(id), id);
-        return repository.get(id);
+        return checkNotFoundWithId(repository.get(id), id);
     }
 
     public User getByEmail(String email) {
         Assert.notNull(email, "email must not be null");
-//        return checkNotFound(repository.getByEmail(email), "email=" + email);
-        return repository.getByEmail(email);
+        return checkNotFound(repository.getByEmail(email), "email=" + email);
     }
 
     @Cacheable("users")

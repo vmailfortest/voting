@@ -8,8 +8,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import ru.javawebinar.voting.RestaurantTestData;
 import ru.javawebinar.voting.model.Restaurant;
 import ru.javawebinar.voting.service.RestaurantService;
+import ru.javawebinar.voting.util.exception.NotFoundException;
 import ru.javawebinar.voting.web.json.JsonUtil;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -65,7 +67,7 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
                 .with(userAuth(USER)))
                 .andExpect(status().isNoContent());
 
-//        assertThrows(NotFoundException.class, () -> restaurantService.get(RESTAURANT_1_ID));
+        assertThrows(NotFoundException.class, () -> restaurantService.get(RESTAURANT_1_ID, 0));
     }
 
     @Test

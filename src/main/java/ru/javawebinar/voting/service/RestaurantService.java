@@ -7,6 +7,8 @@ import ru.javawebinar.voting.repository.RestaurantRepository;
 
 import java.util.List;
 
+import static ru.javawebinar.voting.util.ValidationUtil.checkNotFoundWithId;
+
 @Service
 public class RestaurantService {
 
@@ -22,7 +24,7 @@ public class RestaurantService {
     }
 
     public Restaurant get(int id, int userId) {
-        return repository.get(id, userId);
+        return checkNotFoundWithId(repository.get(id, userId), id);
     }
 
     public List<Restaurant> getAll(int userId) {
@@ -31,10 +33,11 @@ public class RestaurantService {
 
     public void update(Restaurant restaurant) {
         Assert.notNull(restaurant, "restaurant must not be null");
-         repository.save(restaurant);
+        checkNotFoundWithId(repository.save(restaurant), restaurant.getId());
+        repository.save(restaurant);
     }
 
     public void delete(int id) {
-        repository.delete(id, 0);
+        checkNotFoundWithId(repository.delete(id, 0), id);
     }
 }

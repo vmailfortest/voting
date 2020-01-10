@@ -3,7 +3,6 @@ package ru.javawebinar.voting.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import ru.javawebinar.voting.model.Dish;
 import ru.javawebinar.voting.model.Restaurant;
 
 import java.util.List;
@@ -31,7 +30,7 @@ public class RestaurantRepository {
         return crudRepository.findAll();
     }
 
-    public void delete(int id, int userId) {
-        crudRepository.deleteById(id);
+    public boolean delete(int id, int userId) {
+        return crudRepository.delete(id) != 0;
     }
 }
