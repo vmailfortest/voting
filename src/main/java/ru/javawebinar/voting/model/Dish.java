@@ -15,16 +15,22 @@ public class Dish extends AbstractNamedEntity{
     @Column(name = "datetime", nullable = false)
     private String datetime;
 
-    @Column(name = "rest_id", nullable = false)
-    private int rest_id;
+    @Column(name = "restaurant_id", nullable = false)
+    private int restaurant_id;
 
     public Dish() {
     }
 
-    public Dish(String name, String datetime, int rest_id){
+    public Dish(Integer id, String name, String datetime, int restaurant_id){
+        super(id, name);
+        this.datetime = datetime;
+        this.restaurant_id = restaurant_id;
+    }
+
+    public Dish(String name, String datetime, int restaurant_id){
         super(null, name);
         this.datetime = datetime;
-        this.rest_id = rest_id;
+        this.restaurant_id = restaurant_id;
     }
 
     public String getDate() {
@@ -36,10 +42,10 @@ public class Dish extends AbstractNamedEntity{
     }
 
     public int getRestaurantId() {
-        return rest_id;
+        return restaurant_id;
     }
 
-    public void setRestaurantId(int rest_id) {
-        this.rest_id = rest_id;
+    public void setRestaurantId(int restaurant_id) {
+        this.restaurant_id = restaurant_id;
     }
 }

@@ -11,6 +11,7 @@ import static ru.javawebinar.voting.model.AbstractBaseEntity.START_SEQ;
 
 public class RestaurantTestData {
     public static final int RESTAURANT_1_ID = START_SEQ + 2;
+    public static final int RESTAURANT_2_ID = START_SEQ + 3;
 
     public static final Restaurant RESTAURANT_1 = new Restaurant(RESTAURANT_1_ID, "Планета чебуреков");
     public static final Restaurant RESTAURANT_2 = new Restaurant(RESTAURANT_1_ID + 1, "Гречкин дом");

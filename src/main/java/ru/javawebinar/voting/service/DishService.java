@@ -5,6 +5,10 @@ import org.springframework.util.Assert;
 import ru.javawebinar.voting.model.Dish;
 import ru.javawebinar.voting.repository.DishRepository;
 
+import java.util.List;
+
+import static ru.javawebinar.voting.util.ValidationUtil.checkNotFoundWithId;
+
 @Service
 public class DishService {
 
@@ -14,27 +18,26 @@ public class DishService {
         this.repository = repository;
     }
 
-    public Dish get(int id, int userId) {
-        return null;
+    public Dish create(Dish dish) {
+        Assert.notNull(dish, "dish must not be null");
+        return repository.save(dish);
     }
 
-    //    public void delete(int id, int userId) {
-//        repository.delete(id, userId);
-//    }
-//
-//
-//
-//    public List<Dish> getAll(int userId) {
-//        return repository.getAll(userId);
-//    }
-//
-//    public void update(Dish meal, int userId) {
-//        Assert.notNull(meal, "meal must not be null");
-//        checkNotFoundWithId(repository.save(meal, userId), meal.getId());
-//    }
-//
-    public Dish create(Dish meal) {
-        Assert.notNull(meal, "meal must not be null");
-        return repository.save(meal);
+    public Dish get(int id) {
+        return checkNotFoundWithId(repository.get(id), id);
+    }
+
+    public List<Dish> getAll() {
+        return repository.getAll();
+    }
+
+    public void update(Dish dish) {
+        Assert.notNull(dish, "dish must not be null");
+        checkNotFoundWithId(repository.save(dish), dish.getId());
+        repository.save(dish);
+    }
+
+    public void delete(int id) {
+        checkNotFoundWithId(repository.delete(id), id);
     }
 }
