@@ -1,6 +1,7 @@
 package ru.javawebinar.voting.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @NamedQueries({
 //        @NamedQuery(name = Dish.ALL_SORTED, query = "SELECT m FROM Meal m WHERE m.user.id=:userId ORDER BY m.dateTime DESC"),
@@ -15,22 +16,25 @@ public class Dish extends AbstractNamedEntity{
     @Column(name = "datetime", nullable = false)
     private String datetime;
 
-    @Column(name = "restaurant_id", nullable = false)
-    private int restaurant_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id", nullable = false)
+    @NotNull
+//    @Column(name = "restaurant_id", nullable = false)
+    private Restaurant restaurant;
 
     public Dish() {
     }
 
-    public Dish(Integer id, String name, String datetime, int restaurant_id){
+    public Dish(Integer id, String name, String datetime, Restaurant restaurant){
         super(id, name);
         this.datetime = datetime;
-        this.restaurant_id = restaurant_id;
+        this.restaurant = restaurant;
     }
 
-    public Dish(String name, String datetime, int restaurant_id){
+    public Dish(String name, String datetime, Restaurant restaurant){
         super(null, name);
         this.datetime = datetime;
-        this.restaurant_id = restaurant_id;
+        this.restaurant = restaurant;
     }
 
     public String getDate() {
@@ -41,11 +45,11 @@ public class Dish extends AbstractNamedEntity{
         this.datetime = datetime;
     }
 
-    public int getRestaurantId() {
-        return restaurant_id;
+    public Restaurant getRestaurantId() {
+        return restaurant;
     }
 
-    public void setRestaurantId(int restaurant_id) {
-        this.restaurant_id = restaurant_id;
+    public void setRestaurantId(Restaurant restaurant_id) {
+        this.restaurant = restaurant_id;
     }
 }

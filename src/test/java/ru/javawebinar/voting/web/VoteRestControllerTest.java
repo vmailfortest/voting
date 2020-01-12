@@ -5,18 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import ru.javawebinar.voting.VoteTestData;
 import ru.javawebinar.voting.model.Vote;
 import ru.javawebinar.voting.service.VoteService;
 import ru.javawebinar.voting.web.json.JsonUtil;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static ru.javawebinar.voting.RestaurantTestData.RESTAURANT_1;
-import static ru.javawebinar.voting.RestaurantTestData.RESTAURANT_1_ID;
 import static ru.javawebinar.voting.TestUtil.*;
 import static ru.javawebinar.voting.UserTestData.USER;
-import static ru.javawebinar.voting.web.VoteTestData.assertMatch;
+import static ru.javawebinar.voting.VoteTestData.assertMatch;
 
 public class VoteRestControllerTest extends AbstractControllerTest {
 

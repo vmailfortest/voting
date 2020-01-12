@@ -10,24 +10,27 @@ public class Vote extends AbstractBaseEntity {
     private String datetime;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     @NotNull
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "rest_id", nullable = false)
+    @JoinColumn(name = "restaurant_id", nullable = false)
     @NotNull
-    private int rest_id;
+    private Restaurant restaurant;
 
-    public Vote(Integer id, String datetime, int rest_id) {
-        super(id);
-        this.datetime = datetime;
-        this.rest_id = rest_id;
+    public Vote() {
     }
 
-    public Vote(String datetime, int rest_id) {
+    public Vote(Integer id, String datetime, Restaurant restaurant) {
+        super(id);
         this.datetime = datetime;
-        this.rest_id = rest_id;
+        this.restaurant = restaurant;
+    }
+
+    public Vote(String datetime, Restaurant restaurant) {
+        this.datetime = datetime;
+        this.restaurant = restaurant;
     }
 
     public String getDate() {
@@ -36,5 +39,13 @@ public class Vote extends AbstractBaseEntity {
 
     public void setDate(String date) {
         this.datetime = datetime;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

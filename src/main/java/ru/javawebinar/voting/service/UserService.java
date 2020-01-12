@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import ru.javawebinar.topjava.AuthorizedUser;
+import ru.javawebinar.voting.AuthorizedUser;
 import ru.javawebinar.voting.model.User;
 import ru.javawebinar.voting.repository.UserRepository;
 import ru.javawebinar.voting.to.UserTo;

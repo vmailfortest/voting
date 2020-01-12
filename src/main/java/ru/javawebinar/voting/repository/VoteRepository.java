@@ -16,12 +16,15 @@ public class VoteRepository {
     @Autowired
     private CrudVoteRepository crudRepository;
 
+    @Autowired
+    private CrudUserRepository crudUserRepository;
+
     @Transactional
-    public Vote save(Vote vote) {
+    public Vote save(Vote vote, int userId) {
 //        if (get(vote.getId()).getDate() >= LocalTime.of(11, 00)) {
 //            return null;
 //        }
-
+        vote.setUser(crudUserRepository.getOne(userId));
         return crudRepository.save(vote);
     }
 

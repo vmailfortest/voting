@@ -20,9 +20,9 @@ public class VoteService {
         this.repository = repository;
     }
 
-    public Vote create(Vote vote) {
+    public Vote create(Vote vote, int userId) {
         Assert.notNull(vote, "dish must not be null");
-        return repository.save(vote);
+        return repository.save(vote, userId);
     }
 
     public Vote get(int id) {
@@ -33,10 +33,10 @@ public class VoteService {
         return repository.getAll();
     }
 
-    public void update(Vote vote) {
+    public void update(Vote vote, int userId) {
         Assert.notNull(vote, "dish must not be null");
-        checkNotFoundWithId(repository.save(vote), vote.getId());
-        repository.save(vote);
+        checkNotFoundWithId(repository.save(vote, userId), vote.getId());
+        repository.save(vote, userId);
     }
 
     public void delete(int id) {

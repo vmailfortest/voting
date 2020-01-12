@@ -1,4 +1,4 @@
-package ru.javawebinar.topjava;
+package ru.javawebinar.voting;
 
 import ru.javawebinar.voting.model.User;
 import ru.javawebinar.voting.to.UserTo;

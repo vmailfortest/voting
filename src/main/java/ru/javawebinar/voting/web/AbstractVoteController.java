@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import ru.javawebinar.voting.model.Vote;
 import ru.javawebinar.voting.service.VoteService;
+import ru.javawebinar.voting.util.SecurityUtil;
 
 import java.util.List;
 
@@ -17,8 +18,9 @@ public abstract class AbstractVoteController {
     private VoteService service;
 
     public Vote create(Vote vote) {
+        int userId = SecurityUtil.authUserId();
         log.info("create vote {}", vote);
-        return service.create(vote);
+        return service.create(vote, userId);
     }
 
     public Vote get(int id) {
@@ -31,8 +33,9 @@ public abstract class AbstractVoteController {
     }
 
     public void update(Vote vote, int id) {
+        int userId = SecurityUtil.authUserId();
         log.info("update vote {}", vote);
-        service.update(vote);
+        service.update(vote, userId);
     }
 
     public void delete(int id) {

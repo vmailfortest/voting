@@ -25,7 +25,7 @@ public class Main {
             AbstractDishController dishController = appCtx.getBean(AbstractDishController.class);
             RestaurantRestController restaurantController = appCtx.getBean(RestaurantRestController.class);
 
-            dishController.create(new Dish("hello", "2019-12-24 10:00:00", 100002));
+//            dishController.create(new Dish("hello", "2019-12-24 10:00:00", RESTAURANT_1));
 //            restaurantController.create(new Restaurant("NewRestaurant"));
             System.out.println();
 
