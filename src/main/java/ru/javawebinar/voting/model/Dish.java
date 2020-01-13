@@ -45,11 +45,11 @@ public class Dish extends AbstractNamedEntity{
         this.datetime = datetime;
     }
 
-    public Restaurant getRestaurantId() {
+    public Restaurant getRestaurant() {
         return restaurant;
     }
 
-    public void setRestaurantId(Restaurant restaurant) {
+    public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
     }
 }

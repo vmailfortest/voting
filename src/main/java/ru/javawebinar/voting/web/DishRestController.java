@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.javawebinar.voting.model.Dish;
+import ru.javawebinar.voting.to.DishTo;
 
 import java.net.URI;
 import java.util.List;
@@ -29,13 +30,13 @@ public class DishRestController extends AbstractDishController {
 
     @Override
     @GetMapping("/{id}")
-    public Dish get(@PathVariable int id) {
+    public DishTo get(@PathVariable int id) {
         return super.get(id);
     }
 
     @Override
     @GetMapping
-    public List<Dish> getAll() {
+    public List<DishTo> getAll() {
         return super.getAll();
     }
 

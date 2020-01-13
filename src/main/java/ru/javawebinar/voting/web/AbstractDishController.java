@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import ru.javawebinar.voting.model.Dish;
 import ru.javawebinar.voting.service.DishService;
+import ru.javawebinar.voting.to.DishTo;
+import ru.javawebinar.voting.util.DishesUtil;
 
 import java.util.List;
 
@@ -21,13 +23,13 @@ public abstract class AbstractDishController {
         return service.create(dish);
     }
 
-    public Dish get(int id) {
+    public DishTo get(int id) {
         log.info("get dish {}", id);
-        return service.get(id);
+        return DishesUtil.createTo(service.get(id));
     }
 
-    public List<Dish> getAll() {
-        return service.getAll();
+    public List<DishTo> getAll() {
+        return DishesUtil.createTos(service.getAll());
     }
 
     public void update(Dish dish, int id) {
