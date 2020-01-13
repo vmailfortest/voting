@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import ru.javawebinar.voting.model.Vote;
 import ru.javawebinar.voting.service.VoteService;
+import ru.javawebinar.voting.to.VoteTo;
 import ru.javawebinar.voting.util.SecurityUtil;
+import ru.javawebinar.voting.util.VotesUtil;
 
 import java.util.List;
 
@@ -23,9 +25,10 @@ public abstract class AbstractVoteController {
         return service.create(vote, userId);
     }
 
-    public Vote get(int id) {
+    public VoteTo get(int id) {
         log.info("get vote {}", id);
-        return service.get(id);
+        return VotesUtil.createTo(service.get(id));
+//        return service.get(id);
     }
 
     public List<Vote> getAll() {

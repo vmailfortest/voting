@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "votes")
 public class Vote extends AbstractBaseEntity {
+
     @Column(name = "datetime", nullable = false)
     private String datetime;
 
@@ -47,5 +48,13 @@ public class Vote extends AbstractBaseEntity {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 }

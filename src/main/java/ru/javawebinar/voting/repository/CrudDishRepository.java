@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.voting.model.Dish;
+import ru.javawebinar.voting.model.Vote;
 
 @Transactional(readOnly = true)
 public interface CrudDishRepository extends JpaRepository<Dish, Integer> {
@@ -18,4 +19,7 @@ public interface CrudDishRepository extends JpaRepository<Dish, Integer> {
     @Transactional
     @Query("DELETE FROM Dish r WHERE r.id=:id")
     int delete(@Param("id") int id);
+
+    @Query("SELECT d FROM Dish d JOIN FETCH d.restaurant WHERE d.id = ?1")
+    Dish get(int id);
 }

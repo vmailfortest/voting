@@ -28,8 +28,10 @@ public class VoteRepository {
         return crudRepository.save(vote);
     }
 
+    @Transactional
     public Vote get(int id) {
-        return crudRepository.findById(id).orElse(null);
+//        return crudRepository.findById(id).orElse(null);
+        return crudRepository.get(id);
     }
 
     public List<Vote> getAll() {
@@ -39,4 +41,8 @@ public class VoteRepository {
     public boolean delete(int id) {
         return crudRepository.delete(id) != 0;
     }
+
+//    public Vote getWithUser(int id, int userId) {
+//        return crudRepository.getWithUser(id, userId);
+//    }
 }

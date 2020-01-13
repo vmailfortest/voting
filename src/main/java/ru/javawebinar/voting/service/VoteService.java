@@ -1,6 +1,7 @@
 package ru.javawebinar.voting.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import ru.javawebinar.voting.model.Dish;
 import ru.javawebinar.voting.model.Vote;
@@ -25,6 +26,7 @@ public class VoteService {
         return repository.save(vote, userId);
     }
 
+//    @Transactional
     public Vote get(int id) {
         return checkNotFoundWithId(repository.get(id), id);
     }
@@ -42,4 +44,8 @@ public class VoteService {
     public void delete(int id) {
         checkNotFoundWithId(repository.delete(id), id);
     }
+
+//    public Vote getWithUser(int id, int userId) {
+//        return checkNotFoundWithId(repository.getWithUser(id, userId), id);
+//    }
 }

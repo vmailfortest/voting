@@ -3,6 +3,7 @@ package ru.javawebinar.voting;
 import org.springframework.test.web.servlet.ResultMatcher;
 import ru.javawebinar.voting.model.Dish;
 import ru.javawebinar.voting.model.Vote;
+import ru.javawebinar.voting.to.VoteTo;
 
 import java.util.List;
 
@@ -32,7 +33,11 @@ public class VoteTestData {
 //    }
 
     public static void assertMatch(Vote actual, Vote expected) {
-        assertThat(actual).isEqualToIgnoringGivenFields(expected, "user");
+        assertThat(actual).isEqualToIgnoringGivenFields(expected);
+    }
+
+    public static void assertMatch(VoteTo actual, VoteTo expected) {
+        assertThat(actual).isEqualToIgnoringGivenFields(expected);
     }
 
     public static void assertMatch(Iterable<Vote> actual, Vote... expected) {

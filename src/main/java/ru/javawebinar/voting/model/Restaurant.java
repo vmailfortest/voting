@@ -10,6 +10,11 @@ import java.util.List;
 @Table(name = "restaurants")
 public class Restaurant extends AbstractNamedEntity {
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
+//    @OrderBy("dateTime DESC")
+//    @JsonIgnore
+    protected List<Vote> votes;
+
     public Restaurant() {
     }
 
@@ -25,4 +30,8 @@ public class Restaurant extends AbstractNamedEntity {
 //    @OrderBy("dateTime DESC")
 //    @JsonIgnore
     protected List<Dish> dishes;
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
 }

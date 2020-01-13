@@ -8,12 +8,16 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import ru.javawebinar.voting.VoteTestData;
 import ru.javawebinar.voting.model.Vote;
 import ru.javawebinar.voting.service.VoteService;
+import ru.javawebinar.voting.to.VoteTo;
+import ru.javawebinar.voting.util.VotesUtil;
 import ru.javawebinar.voting.web.json.JsonUtil;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static ru.javawebinar.voting.TestUtil.*;
 import static ru.javawebinar.voting.UserTestData.USER;
-import static ru.javawebinar.voting.VoteTestData.assertMatch;
+import static ru.javawebinar.voting.VoteTestData.*;
 
 public class VoteRestControllerTest extends AbstractControllerTest {
 
@@ -22,30 +26,30 @@ public class VoteRestControllerTest extends AbstractControllerTest {
     @Autowired
     private VoteService voteService;
 
-    @Test
-    void createWithLocation() throws Exception {
-        Vote newVote = VoteTestData.getNew();
-        ResultActions action = mockMvc.perform(MockMvcRequestBuilders.post(REST_URL)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.writeValue(newVote))
-                .with(userAuth(USER)));
-
-        Vote created = readFromJson(action, Vote.class);
-        Integer newId = created.getId();
-        newVote.setId(newId);
-        assertMatch(created, newVote);
-        assertMatch(voteService.get(newId), newVote);
-    }
-
 //    @Test
-//    void get() throws Exception {
-//        mockMvc.perform(MockMvcRequestBuilders.get(REST_URL + RESTAURANT_1_ID)
-//                .with(userAuth(USER)))
-//                .andExpect(status().isOk())
-//                .andDo(print())
-//                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-//                .andExpect(result -> assertMatch(readFromJsonMvcResult(result, Vote.class), RESTAURANT_1));
+//    void createWithLocation() throws Exception {
+//        Vote newVote = VoteTestData.getNew();
+//        ResultActions action = mockMvc.perform(MockMvcRequestBuilders.post(REST_URL)
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(JsonUtil.writeValue(newVote))
+//                .with(userAuth(USER)));
+//
+//        Vote created = readFromJson(action, Vote.class);
+//        Integer newId = created.getId();
+//        newVote.setId(newId);
+//        assertMatch(created, newVote);
+//        assertMatch(voteService.get(newId), newVote);
 //    }
+
+    @Test
+    void get() throws Exception {
+        var test = mockMvc.perform(MockMvcRequestBuilders.get(REST_URL + VOTE_1_ID)
+                .with(userAuth(USER)))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(result -> assertMatch(readFromJsonMvcResult(result, Vote.class), VOTE_1));
+    }
 
 //    @Test
 //    void getAll() throws Exception {

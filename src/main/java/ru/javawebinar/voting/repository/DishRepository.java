@@ -23,7 +23,8 @@ public class DishRepository {
     }
 
     public Dish get(int id) {
-        return crudRepository.findById(id).orElse(null);
+//        return crudRepository.findById(id).orElse(null);
+        return crudRepository.get(id);
     }
 
     public List<Dish> getAll() {

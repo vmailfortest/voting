@@ -19,4 +19,7 @@ public interface CrudVoteRepository extends JpaRepository<Vote, Integer> {
     @Transactional
     @Query("DELETE FROM Vote v WHERE v.id=:id")
     int delete(@Param("id") int id);
+
+    @Query("SELECT v FROM Vote v JOIN FETCH v.user JOIN FETCH v.restaurant WHERE v.id = ?1")
+    Vote get(int id);
 }

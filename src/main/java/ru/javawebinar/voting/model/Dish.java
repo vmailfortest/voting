@@ -49,7 +49,7 @@ public class Dish extends AbstractNamedEntity{
         return restaurant;
     }
 
-    public void setRestaurantId(Restaurant restaurant_id) {
-        this.restaurant = restaurant_id;
+    public void setRestaurantId(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 }
