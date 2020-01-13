@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import ru.javawebinar.voting.model.Restaurant;
 import ru.javawebinar.voting.service.RestaurantService;
+import ru.javawebinar.voting.to.RestaurantTo;
+import ru.javawebinar.voting.util.RestaurantsUtil;
 
 import java.util.List;
 
@@ -21,13 +23,14 @@ public abstract class AbstractRestaurantController {
         return service.create(restaurant);
     }
 
-    public Restaurant get(int id) {
+    public RestaurantTo get(int id) {
         log.info("get restaurant {}", id);
-        return service.get(id, 0);
+        return RestaurantsUtil.createTo(service.get(id, 0));
     }
 
-    public List<Restaurant> getAll() {
-        return service.getAll(0);
+    public List<RestaurantTo> getAll() {
+        log.info("get all restaurants");
+        return RestaurantsUtil.createTos(service.getAll(0));
     }
 
     public void update(Restaurant restaurant, int id) {

@@ -26,20 +26,20 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
     @Autowired
     private RestaurantService restaurantService;
 
-    @Test
-    void createWithLocation() throws Exception {
-        Restaurant newRestaurant = RestaurantTestData.getNew();
-        ResultActions action = mockMvc.perform(MockMvcRequestBuilders.post(REST_URL)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.writeValue(newRestaurant))
-                .with(userAuth(USER)));
-
-        Restaurant created = readFromJson(action, Restaurant.class);
-        Integer newId = created.getId();
-        newRestaurant.setId(newId);
-        assertMatch(created, newRestaurant);
-        assertMatch(restaurantService.get(newId, 0), newRestaurant);
-    }
+//    @Test
+//    void createWithLocation() throws Exception {
+//        Restaurant newRestaurant = RestaurantTestData.getNew();
+//        ResultActions action = mockMvc.perform(MockMvcRequestBuilders.post(REST_URL)
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(JsonUtil.writeValue(newRestaurant))
+//                .with(userAuth(USER)));
+//
+//        Restaurant created = readFromJson(action, Restaurant.class);
+//        Integer newId = created.getId();
+//        newRestaurant.setId(newId);
+//        assertMatch(created, newRestaurant);
+//        assertMatch(restaurantService.get(newId, 0), newRestaurant);
+//    }
 
     @Test
     void get() throws Exception {
@@ -70,17 +70,17 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
         assertThrows(NotFoundException.class, () -> restaurantService.get(RESTAURANT_1_ID, 0));
     }
 
-    @Test
-    void update() throws Exception {
-        Restaurant updated = RestaurantTestData.getUpdated();
-        mockMvc.perform(MockMvcRequestBuilders.put(REST_URL + RESTAURANT_1_ID)
-                .contentType(MediaType.APPLICATION_JSON)
-                .with(userHttpBasic(USER))
-                .content(JsonUtil.writeValue(updated)))
-                .andExpect(status().isNoContent());
-
-        assertMatch(restaurantService.get(RESTAURANT_1_ID, 0), updated);
-    }
+//    @Test
+//    void update() throws Exception {
+//        Restaurant updated = RestaurantTestData.getUpdated();
+//        mockMvc.perform(MockMvcRequestBuilders.put(REST_URL + RESTAURANT_1_ID)
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .with(userHttpBasic(USER))
+//                .content(JsonUtil.writeValue(updated)))
+//                .andExpect(status().isNoContent());
+//
+//        assertMatch(restaurantService.get(RESTAURANT_1_ID, 0), updated);
+//    }
 
     @Test
     void getUnAuth() throws Exception {

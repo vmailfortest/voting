@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.javawebinar.voting.model.Restaurant;
+import ru.javawebinar.voting.to.RestaurantTo;
 
 import java.net.URI;
 import java.util.List;
@@ -29,13 +30,13 @@ public class RestaurantRestController extends AbstractRestaurantController{
 
     @Override
     @GetMapping("/{id}")
-    public Restaurant get(@PathVariable int id) {
+    public RestaurantTo get(@PathVariable int id) {
         return super.get(id);
     }
 
     @Override
     @GetMapping
-    public List<Restaurant> getAll() {
+    public List<RestaurantTo> getAll() {
         return super.getAll();
     }
 
