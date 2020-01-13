@@ -18,8 +18,8 @@ public class DishRestController extends AbstractDishController {
     static final String REST_URL = "/rest/profile/dishes";
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Dish> createWithLocation(@RequestBody Dish dish) {
-        Dish created = super.create(dish);
+    public ResponseEntity<Dish> createWithLocation(@RequestBody DishTo dishTo) {
+        Dish created = super.create(dishTo);
 
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")

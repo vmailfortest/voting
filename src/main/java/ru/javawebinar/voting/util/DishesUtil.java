@@ -22,7 +22,7 @@ public class DishesUtil {
         return result;
     }
 
-//    public static Dish createNewFromTo(DishTo dishTo) {
-//        return new Dish(dishTo.getName(), dishTo.getDatetime(), new Restaurant("dishTo.getRestaurantId()"));
-//    }
+    public static Dish createNewFromTo(DishTo dishTo) {
+        return new Dish(dishTo.getName(), dishTo.getDatetime(), new Restaurant(dishTo.getRestaurantId(), ""));
+    }
 }

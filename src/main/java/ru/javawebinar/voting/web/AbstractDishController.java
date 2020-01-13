@@ -18,9 +18,9 @@ public abstract class AbstractDishController {
     @Autowired
     private DishService service;
 
-    public Dish create(Dish dish) {
-        log.info("create dish {}", dish);
-        return service.create(dish);
+    public Dish create(DishTo dishTo) {
+        log.info("create dish {}", dishTo);
+        return service.create(DishesUtil.createNewFromTo(dishTo));
     }
 
     public DishTo get(int id) {
