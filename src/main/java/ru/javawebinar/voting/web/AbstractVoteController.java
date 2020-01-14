@@ -34,9 +34,10 @@ public abstract class AbstractVoteController {
         return VotesUtil.createTos(service.getAll());
     }
 
-    public void update(VoteTo voteTo) {
+    public void update(VoteTo voteTo, int id) {
         int userId = SecurityUtil.authUserId();
         log.info("update vote {}", voteTo);
+        voteTo.setId(id);
         service.update(VotesUtil.createNewFromTo(voteTo), userId);
     }
 

@@ -43,8 +43,8 @@ public class VoteRestController extends AbstractVoteController {
     @Override
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void update(@RequestBody VoteTo voteTo) {
-        super.update(voteTo);
+    public void update(@RequestBody VoteTo voteTo, @PathVariable int id) {
+        super.update(voteTo, id);
     }
 
     @Override
