@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping(value = DishRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class DishRestController extends AbstractDishController {
 
-    static final String REST_URL = "/rest/profile/dishes";
+    static final String REST_URL = "/rest/admin/dishes";
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Dish> createWithLocation(@RequestBody DishTo dishTo) {
