@@ -18,8 +18,8 @@ public class VoteRestController extends AbstractVoteController {
     static final String REST_URL = "/rest/profile/votes";
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Vote> createWithLocation(@RequestBody Vote vote) {
-        Vote created = super.create(vote);
+    public ResponseEntity<Vote> createWithLocation(@RequestBody VoteTo voteTo) {
+        Vote created = super.create(voteTo);
 
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
@@ -36,15 +36,15 @@ public class VoteRestController extends AbstractVoteController {
 
     @Override
     @GetMapping
-    public List<Vote> getAll() {
+    public List<VoteTo> getAll() {
         return super.getAll();
     }
 
     @Override
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void update(@RequestBody Vote vote, @PathVariable int id) {
-        super.update(vote, id);
+    public void update(@RequestBody VoteTo voteTo) {
+        super.update(voteTo);
     }
 
     @Override

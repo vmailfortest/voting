@@ -19,16 +19,16 @@ public class VoteTo extends BaseTo implements Serializable {
 
     @NotBlank
     @Size(max = 32, message = "length must be between 5 and 32 characters")
-    private int restaurant;
+    private int restaurantId;
 
     public VoteTo() {
     }
 
-    public VoteTo(Integer id, String datetime, int user, int restaurant) {
+    public VoteTo(Integer id, String datetime, int user, int restaurantId) {
         super(id);
         this.datetime = datetime;
         this.user = user;
-        this.restaurant = restaurant;
+        this.restaurantId = restaurantId;
     }
 
     public String getDatetime() {
@@ -47,12 +47,12 @@ public class VoteTo extends BaseTo implements Serializable {
         this.user = user;
     }
 
-    public Integer getRestaurant() {
-        return restaurant;
+    public Integer getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setRestaurant(int restaurant) {
-        this.restaurant = restaurant;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
 //    public String getPassword() {

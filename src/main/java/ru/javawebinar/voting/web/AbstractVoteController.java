@@ -19,26 +19,25 @@ public abstract class AbstractVoteController {
     @Autowired
     private VoteService service;
 
-    public Vote create(Vote vote) {
+    public Vote create(VoteTo voteTo) {
         int userId = SecurityUtil.authUserId();
-        log.info("create vote {}", vote);
-        return service.create(vote, userId);
+        log.info("create vote {}", voteTo);
+        return service.create(VotesUtil.createNewFromTo(voteTo), userId);
     }
 
     public VoteTo get(int id) {
         log.info("get vote {}", id);
         return VotesUtil.createTo(service.get(id));
-//        return service.get(id);
     }
 
-    public List<Vote> getAll() {
-        return service.getAll();
+    public List<VoteTo> getAll() {
+        return VotesUtil.createTos(service.getAll());
     }
 
-    public void update(Vote vote, int id) {
+    public void update(VoteTo voteTo) {
         int userId = SecurityUtil.authUserId();
-        log.info("update vote {}", vote);
-        service.update(vote, userId);
+        log.info("update vote {}", voteTo);
+        service.update(VotesUtil.createNewFromTo(voteTo), userId);
     }
 
     public void delete(int id) {

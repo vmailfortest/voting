@@ -20,7 +20,7 @@ public class VoteTestData {
     public static final Vote VOTE_1 = new Vote(VOTE_1_ID, "2020-01-10 10:00:00", RESTAURANT_1);
     public static final Vote VOTE_2 = new Vote(VOTE_1_ID + 1, "2020-01-10 10:00:00", RESTAURANT_2);
     public static final Vote VOTE_3 = new Vote(VOTE_1_ID + 2, "2020-01-11 10:00:00", RESTAURANT_2);
-//    public static final Vote VOTE_4 = new Vote(VOTE_1_ID + 3, "2020-01-11 10:00:00", 100003);
+    public static final Vote VOTE_4 = new Vote(VOTE_1_ID + 3, "2020-01-11 10:00:00", RESTAURANT_2);
 
     public static final List<Vote> VOTES = List.of(VOTE_1, VOTE_2, VOTE_3);
 

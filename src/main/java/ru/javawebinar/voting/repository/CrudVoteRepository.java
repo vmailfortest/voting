@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.voting.model.Dish;
 import ru.javawebinar.voting.model.Vote;
 
+import java.util.List;
+
 @Transactional(readOnly = true)
 public interface CrudVoteRepository extends JpaRepository<Vote, Integer> {
 
@@ -22,4 +24,7 @@ public interface CrudVoteRepository extends JpaRepository<Vote, Integer> {
 
     @Query("SELECT v FROM Vote v JOIN FETCH v.user JOIN FETCH v.restaurant WHERE v.id = ?1")
     Vote get(int id);
+
+    @Query("SELECT v FROM Vote v JOIN FETCH v.user JOIN FETCH v.restaurant")
+    List<Vote> getAll();
 }

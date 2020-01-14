@@ -35,7 +35,7 @@ public class VoteRepository {
     }
 
     public List<Vote> getAll() {
-        return crudRepository.findAll();
+        return crudRepository.getAll();
     }
 
     public boolean delete(int id) {
