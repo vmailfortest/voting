@@ -35,7 +35,7 @@ public abstract class AbstractRestaurantController {
 
     public void update(Restaurant restaurant, int id) {
         log.info("update restaurant {}", restaurant);
-        service.update(restaurant);
+         service.update(restaurant, id);
     }
 
     public void delete(int id) {

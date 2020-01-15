@@ -43,8 +43,8 @@ public class DishRestController extends AbstractDishController {
     @Override
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void update(@RequestBody Dish dish, @PathVariable int id) {
-        super.update(dish, id);
+    public void update(@RequestBody DishTo dishTo, @PathVariable int id) {
+        super.update(dishTo, id);
     }
 
     @Override

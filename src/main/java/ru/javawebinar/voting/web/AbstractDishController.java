@@ -32,9 +32,9 @@ public abstract class AbstractDishController {
         return DishesUtil.createTos(service.getAll());
     }
 
-    public void update(Dish dish, int id) {
-        log.info("update dish {}", dish);
-        service.update(dish);
+    public void update(DishTo dishTo, int id) {
+        log.info("update dish {}", dishTo);
+        service.update(DishesUtil.createNewFromTo(dishTo), id);
     }
 
     public void delete(int id) {
