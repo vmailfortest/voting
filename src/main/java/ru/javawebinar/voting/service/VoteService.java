@@ -5,6 +5,7 @@ import org.springframework.util.Assert;
 import ru.javawebinar.voting.model.Vote;
 import ru.javawebinar.voting.repository.VoteRepository;
 
+import java.time.LocalTime;
 import java.util.List;
 
 import static ru.javawebinar.voting.util.ValidationUtil.checkNotFoundWithId;
@@ -35,7 +36,7 @@ public class VoteService {
 
     public void update(Vote vote, int userId) {
         Assert.notNull(vote, "vote must not be null");
-        checkNotFoundWithId(repository.save(vote, userId), vote.getId());
+        Assert.isTrue(vote.getDate().toLocalTime().compareTo(LocalTime.of(11, 00, 00)) <= 0, "Vote can be changed before 11:00");
         repository.save(vote, userId);
     }
 
