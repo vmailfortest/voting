@@ -1,11 +1,8 @@
 package ru.javawebinar.voting.service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import ru.javawebinar.voting.model.Dish;
 import ru.javawebinar.voting.model.Vote;
-import ru.javawebinar.voting.repository.DishRepository;
 import ru.javawebinar.voting.repository.VoteRepository;
 
 import java.util.List;
@@ -23,6 +20,7 @@ public class VoteService {
 
     public Vote create(Vote vote, int userId) {
         Assert.notNull(vote, "vote must not be null");
+        Assert.isTrue(repository.getByDateAndUser(vote.getDate(), userId).size() == 0, "Vote for user/date already exists");
         return repository.save(vote, userId);
     }
 

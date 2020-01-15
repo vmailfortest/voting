@@ -30,4 +30,7 @@ public interface CrudVoteRepository extends JpaRepository<Vote, Integer> {
 
     @Query("SELECT v FROM Vote v JOIN FETCH v.restaurant WHERE v.datetime between ?1 and ?2")
     List<Vote> get(LocalDateTime startDate, LocalDateTime endDate);
+
+    @Query("SELECT v FROM Vote v WHERE v.datetime=?1 AND v.user.id=?2")
+    List<Vote> getByDateAndUser(LocalDateTime date, int id);
 }

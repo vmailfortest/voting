@@ -7,6 +7,7 @@ import ru.javawebinar.voting.model.Vote;
 import ru.javawebinar.voting.util.DateTimeUtil;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class VoteRepository {
         return crudRepository.delete(id) != 0;
     }
 
-//    public Vote getWithUser(int id, int userId) {
-//        return crudRepository.getWithUser(id, userId);
-//    }
+    public List<Vote> getByDateAndUser(LocalDateTime date, int id) {
+        return crudRepository.getByDateAndUser(date, id);
+    }
 }
