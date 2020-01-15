@@ -2,6 +2,7 @@ package ru.javawebinar.voting;
 
 import org.springframework.test.web.servlet.ResultMatcher;
 import ru.javawebinar.voting.model.Dish;
+import ru.javawebinar.voting.to.DishTo;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -37,7 +38,11 @@ public class DishTestData {
     }
 
     public static void assertMatch(Dish actual, Dish expected) {
-        assertThat(actual).isEqualToIgnoringGivenFields(expected, "user");
+        assertThat(actual).isEqualToIgnoringGivenFields(expected);
+    }
+
+    public static void assertMatch(DishTo actual, DishTo expected) {
+        assertThat(actual).isEqualToIgnoringGivenFields(expected);
     }
 
     public static void assertMatch(Iterable<Dish> actual, Dish... expected) {
@@ -45,7 +50,7 @@ public class DishTestData {
     }
 
     public static void assertMatch(Iterable<Dish> actual, Iterable<Dish> expected) {
-        assertThat(actual).usingElementComparatorIgnoringFields("user").isEqualTo(expected);
+        assertThat(actual).isEqualTo(expected);
     }
 
     public static ResultMatcher contentJson(Dish... expected) {
