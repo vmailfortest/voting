@@ -5,9 +5,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
-import ru.javawebinar.voting.model.Dish;
 import ru.javawebinar.voting.model.Vote;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Transactional(readOnly = true)
@@ -27,4 +27,7 @@ public interface CrudVoteRepository extends JpaRepository<Vote, Integer> {
 
     @Query("SELECT v FROM Vote v JOIN FETCH v.user JOIN FETCH v.restaurant")
     List<Vote> getAll();
+
+    @Query("SELECT v FROM Vote v JOIN FETCH v.restaurant WHERE v.datetime between ?1 and ?2")
+    List<Vote> get(LocalDateTime startDate, LocalDateTime endDate);
 }

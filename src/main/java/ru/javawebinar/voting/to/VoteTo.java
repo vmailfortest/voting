@@ -4,13 +4,14 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 public class VoteTo extends BaseTo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @NotBlank
     @Size(min = 2, max = 100)
-    private String datetime;
+    private LocalDateTime datetime;
 
     @Email
     @NotBlank
@@ -24,18 +25,18 @@ public class VoteTo extends BaseTo implements Serializable {
     public VoteTo() {
     }
 
-    public VoteTo(Integer id, String datetime, int user, int restaurantId) {
+    public VoteTo(Integer id, LocalDateTime datetime, int user, int restaurantId) {
         super(id);
         this.datetime = datetime;
         this.user = user;
         this.restaurantId = restaurantId;
     }
 
-    public String getDatetime() {
+    public LocalDateTime getDatetime() {
         return datetime;
     }
 
-    public void setDatetime(String datetime) {
+    public void setDatetime(LocalDateTime datetime) {
         this.datetime = datetime;
     }
 

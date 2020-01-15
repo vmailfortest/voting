@@ -3,6 +3,7 @@ package ru.javawebinar.voting.to;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class DishTo extends BaseTo implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -13,7 +14,7 @@ public class DishTo extends BaseTo implements Serializable {
 
     @NotBlank
     @Size(min = 2, max = 100)
-    private String datetime;
+    private LocalDate datetime;
 
     @NotBlank
     @Size(max = 32, message = "length must be between 5 and 32 characters")
@@ -22,7 +23,7 @@ public class DishTo extends BaseTo implements Serializable {
     public DishTo() {
     }
 
-    public DishTo(Integer id, String name, String datetime, int restaurantId) {
+    public DishTo(Integer id, String name, LocalDate datetime, int restaurantId) {
         super(id);
         this.name = name;
         this.datetime = datetime;
@@ -37,11 +38,11 @@ public class DishTo extends BaseTo implements Serializable {
         this.name = name;
     }
 
-    public String getDatetime() {
+    public LocalDate getDatetime() {
         return datetime;
     }
 
-    public void setDatetime(String datetime) {
+    public void setDatetime(LocalDate datetime) {
         this.datetime = datetime;
     }
 

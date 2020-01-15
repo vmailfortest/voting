@@ -2,19 +2,20 @@ package ru.javawebinar.voting;
 
 import org.springframework.test.web.servlet.ResultMatcher;
 import ru.javawebinar.voting.model.Dish;
-import ru.javawebinar.voting.model.Restaurant;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static ru.javawebinar.voting.RestaurantTestData.*;
+import static ru.javawebinar.voting.RestaurantTestData.RESTAURANT_1;
+import static ru.javawebinar.voting.RestaurantTestData.RESTAURANT_2;
 import static ru.javawebinar.voting.TestUtil.readListFromJsonMvcResult;
 import static ru.javawebinar.voting.model.AbstractBaseEntity.START_SEQ;
 
 public class DishTestData {
     public static final int DISH_1_ID = START_SEQ + 4;
-    public static final String DATE_YESTERDAY = "2020-01-10";
-    public static final String DATE_TODAY = "2020-01-11";
+    public static final LocalDate DATE_YESTERDAY = LocalDate.of(2020, 01, 10);
+    public static final LocalDate DATE_TODAY = LocalDate.of(2020, 01, 11);
 
     public static final Dish DISH_1 = new Dish(DISH_1_ID, "Чебурек с сыром", DATE_YESTERDAY, RESTAURANT_1);
     public static final Dish DISH_2 = new Dish(DISH_1_ID + 1, "Пепси", DATE_YESTERDAY, RESTAURANT_1);

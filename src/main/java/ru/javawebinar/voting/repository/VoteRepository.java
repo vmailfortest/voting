@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.voting.model.Vote;
+import ru.javawebinar.voting.util.DateTimeUtil;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -24,8 +27,11 @@ public class VoteRepository {
 
     @Transactional
     public Vote get(int id) {
-//        return crudRepository.findById(id).orElse(null);
         return crudRepository.get(id);
+    }
+
+    public List<Vote> get(LocalDate date) {
+        return crudRepository.get(DateTimeUtil.getStartInclusive(date), DateTimeUtil.getEndExclusive(date));
     }
 
     public List<Vote> getAll() {

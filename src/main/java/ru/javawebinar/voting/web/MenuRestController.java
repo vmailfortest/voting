@@ -1,15 +1,12 @@
 package ru.javawebinar.voting.web;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import ru.javawebinar.voting.model.Dish;
-import ru.javawebinar.voting.model.Menu;
-import ru.javawebinar.voting.to.DishTo;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import ru.javawebinar.voting.to.MenuTo;
 
-import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,7 +18,7 @@ public class MenuRestController extends AbstractMenuController {
 
     @Override
     @GetMapping("/{date}")
-    public List<Menu> get(@PathVariable LocalDate date) {
+    public List<MenuTo> get(@PathVariable LocalDate date) {
         return super.get(date);
     }
 }

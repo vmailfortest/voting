@@ -2,13 +2,14 @@ package ru.javawebinar.voting.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "votes")
 public class Vote extends AbstractBaseEntity {
 
     @Column(name = "datetime", nullable = false)
-    private String datetime;
+    private LocalDateTime datetime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -23,22 +24,22 @@ public class Vote extends AbstractBaseEntity {
     public Vote() {
     }
 
-    public Vote(Integer id, String datetime, Restaurant restaurant) {
+    public Vote(Integer id, LocalDateTime datetime, Restaurant restaurant) {
         super(id);
         this.datetime = datetime;
         this.restaurant = restaurant;
     }
 
-    public Vote(String datetime, Restaurant restaurant) {
+    public Vote(LocalDateTime datetime, Restaurant restaurant) {
         this.datetime = datetime;
         this.restaurant = restaurant;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return datetime;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.datetime = datetime;
     }
 

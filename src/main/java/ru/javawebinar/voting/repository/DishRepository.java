@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.voting.model.Dish;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -23,8 +24,11 @@ public class DishRepository {
     }
 
     public Dish get(int id) {
-//        return crudRepository.findById(id).orElse(null);
         return crudRepository.get(id);
+    }
+
+    public List<Dish> get(LocalDate date) {
+        return crudRepository.get(date);
     }
 
     public List<Dish> getAll() {

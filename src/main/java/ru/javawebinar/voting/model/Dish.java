@@ -2,6 +2,7 @@ package ru.javawebinar.voting.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 @NamedQueries({
 //        @NamedQuery(name = Dish.ALL_SORTED, query = "SELECT m FROM Meal m WHERE m.user.id=:userId ORDER BY m.dateTime DESC"),
@@ -14,7 +15,7 @@ import javax.validation.constraints.NotNull;
 public class Dish extends AbstractNamedEntity{
 
     @Column(name = "datetime", nullable = false)
-    private String datetime;
+    private LocalDate datetime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
@@ -25,23 +26,23 @@ public class Dish extends AbstractNamedEntity{
     public Dish() {
     }
 
-    public Dish(Integer id, String name, String datetime, Restaurant restaurant){
+    public Dish(Integer id, String name, LocalDate datetime, Restaurant restaurant) {
         super(id, name);
         this.datetime = datetime;
         this.restaurant = restaurant;
     }
 
-    public Dish(String name, String datetime, Restaurant restaurant){
+    public Dish(String name, LocalDate datetime, Restaurant restaurant) {
         super(null, name);
         this.datetime = datetime;
         this.restaurant = restaurant;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return datetime;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.datetime = datetime;
     }
 

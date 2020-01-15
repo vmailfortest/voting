@@ -6,7 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.voting.model.Dish;
-import ru.javawebinar.voting.model.Vote;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Transactional(readOnly = true)
 public interface CrudDishRepository extends JpaRepository<Dish, Integer> {
@@ -22,4 +24,7 @@ public interface CrudDishRepository extends JpaRepository<Dish, Integer> {
 
     @Query("SELECT d FROM Dish d JOIN FETCH d.restaurant WHERE d.id = ?1")
     Dish get(int id);
+
+    @Query("SELECT d FROM Dish d JOIN FETCH d.restaurant WHERE d.datetime = ?1")
+    List<Dish> get(LocalDate date);
 }
