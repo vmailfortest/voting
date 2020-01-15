@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import ru.javawebinar.voting.model.Vote;
 import ru.javawebinar.voting.service.VoteService;
 import ru.javawebinar.voting.to.VoteTo;
@@ -36,6 +37,8 @@ public abstract class AbstractVoteController {
 
     public void update(VoteTo voteTo, int id) {
         int userId = SecurityUtil.authUserId();
+        var voteUser = get(id).getUser();
+        Assert.isTrue(userId == voteUser, "Trying to update vote of other user");
         log.info("update vote {}", voteTo);
         voteTo.setId(id);
         service.update(VotesUtil.createNewFromTo(voteTo), userId);
