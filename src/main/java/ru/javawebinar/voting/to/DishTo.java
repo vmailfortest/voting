@@ -56,10 +56,11 @@ public class DishTo extends BaseTo implements Serializable {
 
     @Override
     public String toString() {
-        return "UserTo{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", email='" + email + '\'' +
+        return "DishTo{" +
+                "id=" + id +
+                ", name=" + name +
+                ", dateTime=" + datetime +
+                ", restaurant='" + restaurantId + '\'' +
                 '}';
     }
 }

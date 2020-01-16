@@ -41,4 +41,12 @@ public class MenuTo extends AbstractBaseEntity {
     public void setVotesCount(Long votesCount) {
         this.votesCount = votesCount;
     }
+
+    @Override
+    public String toString() {
+        return "MenuTo{" +
+                "restaurant=" + restaurant.id +
+                ", votesCount=" + votesCount +
+                '}';
+    }
 }

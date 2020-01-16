@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 public class Vote extends AbstractBaseEntity {
 
     @Column(name = "datetime", nullable = false)
+    @NotNull
     private LocalDateTime datetime;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -57,5 +58,16 @@ public class Vote extends AbstractBaseEntity {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    @Override
+    public String toString() {
+        return "Vote{" +
+                "id=" + id +
+                ", name=" + datetime +
+                ", dateTime=" + datetime +
+                ", restaurant=" + restaurant.getId() +
+                ", user=" + user.getId() +
+                '}';
     }
 }

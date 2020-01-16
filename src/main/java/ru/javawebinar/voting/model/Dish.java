@@ -4,23 +4,17 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-@NamedQueries({
-//        @NamedQuery(name = Dish.ALL_SORTED, query = "SELECT m FROM Meal m WHERE m.user.id=:userId ORDER BY m.dateTime DESC"),
-//        @NamedQuery(name = Dish.DELETE, query = "DELETE FROM Meal m WHERE m.id=:id AND m.user.id=:userId"),
-//        @NamedQuery(name = Dish.GET_BETWEEN, query = "SELECT m FROM Meal m " +
-//                "WHERE m.user.id=:userId AND m.dateTime >= :startDate AND m.dateTime < :endDate ORDER BY m.dateTime DESC"),
-})
 @Entity
 @Table(name = "dishes")
 public class Dish extends AbstractNamedEntity{
 
     @Column(name = "datetime", nullable = false)
+    @NotNull
     private LocalDate datetime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
     @NotNull
-//    @Column(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
 
     public Dish() {
@@ -52,5 +46,15 @@ public class Dish extends AbstractNamedEntity{
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "id=" + id +
+                ", name=" + name +
+                ", dateTime=" + datetime +
+                ", restaurant='" + restaurant.getId() + '\'' +
+                '}';
     }
 }

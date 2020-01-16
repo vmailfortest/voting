@@ -1,7 +1,6 @@
 package ru.javawebinar.voting.model;
 
 import org.hibernate.Hibernate;
-import org.springframework.data.domain.Persistable;
 import ru.javawebinar.voting.HasId;
 
 import javax.persistence.*;

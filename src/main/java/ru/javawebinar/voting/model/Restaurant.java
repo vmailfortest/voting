@@ -10,9 +10,7 @@ import java.util.List;
 @Table(name = "restaurants")
 public class Restaurant extends AbstractNamedEntity {
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
-//    @OrderBy("dateTime DESC")
-//    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     protected List<Vote> votes;
 
     public Restaurant() {
@@ -26,12 +24,18 @@ public class Restaurant extends AbstractNamedEntity {
         super(id, name);
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
-//    @OrderBy("dateTime DESC")
-//    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
     protected List<Dish> dishes;
 
     public List<Vote> getVotes() {
         return votes;
+    }
+
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "id=" + id +
+                ", name=" + name +
+                '}';
     }
 }

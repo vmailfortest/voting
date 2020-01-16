@@ -28,4 +28,12 @@ public class RestaurantTo extends BaseTo implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "RestaurantTo{" +
+                "id=" + id +
+                ", name=" + name +
+                '}';
+    }
 }
