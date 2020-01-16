@@ -20,7 +20,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static ru.javawebinar.voting.DishTestData.*;
 import static ru.javawebinar.voting.TestUtil.*;
 import static ru.javawebinar.voting.UserTestData.ADMIN;
-import static ru.javawebinar.voting.UserTestData.USER;
 
 public class DishRestControllerTest extends AbstractControllerTest {
 
@@ -34,7 +33,7 @@ public class DishRestControllerTest extends AbstractControllerTest {
         Dish newDish = DishTestData.getNew();
         ResultActions action = mockMvc.perform(MockMvcRequestBuilders.post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.writeValue(newDish))
+                .content(JsonUtil.writeValue(DishesUtil.createTo(newDish)))
                 .with(userAuth(ADMIN)));
 
         Dish created = readFromJson(action, Dish.class);
@@ -54,15 +53,15 @@ public class DishRestControllerTest extends AbstractControllerTest {
                 .andExpect(result -> assertMatch(readFromJsonMvcResult(result, DishTo.class), DishesUtil.createTo(DISH_1)));
     }
 
-    @Test
-    void getAll() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get(REST_URL)
-                .with(userAuth(ADMIN)))
-                .andExpect(status().isOk())
-                .andDo(print())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(contentJson(DISHES));
-    }
+//    @Test
+//    void getAll() throws Exception {
+//        mockMvc.perform(MockMvcRequestBuilders.get(REST_URL)
+//                .with(userAuth(ADMIN)))
+//                .andExpect(status().isOk())
+//                .andDo(print())
+//                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+//                .andExpect(contentJson(DISHES));
+//    }
 
     @Test
     void delete() throws Exception {
